@@ -5,6 +5,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"math/cmplx"
 	"math/rand"
 	"time"
 )
@@ -27,7 +28,18 @@ func split(sum int) (x, y int)  {
 }
 
 //var statement at package level, list of variables that are bool
+//No initializer
 var c, python, java bool
+
+//var with initializer
+var d, e int = 1, 2
+
+//variable statements can be factored into blocks like imports
+var (
+	ToBe bool = false
+	MaxInt uint64 = 1<<64 -1
+	z complex128 = cmplx.Sqrt(-5 + 12i)
+)
 
 func main()  {
 	//Print String
@@ -56,4 +68,20 @@ func main()  {
 	//var statement at the function level
 	var i, j int
 	fmt.Println(i, j, c, python, java)
+
+	//var with initializer and no type declaration
+	var c, python, java = true, false, "gus"
+	fmt.Println(d, e, c, python, java)
+
+	//short variable assignment statement without declaration/type
+	k := 3
+	f, g, h := true, true, false
+	fmt.Println(k, f, g, h)
+
+	//Go basic types are bool, string, int, byte, rune, float32, float64
+	//complex64, complex128, %T is type and %v is value
+	fmt.Println("Basic variable types")
+	fmt.Printf("Type: %T Value: %v\n", ToBe, ToBe)
+	fmt.Printf("Type: %T Value: %v\n", MaxInt, MaxInt)
+	fmt.Printf("Type: %T Value: %v\n", z, z)
 }
